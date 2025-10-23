@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import './App.css'
 
 function App() {
+  
   const [isDarkMode, setIsDarkMode] = useState(false)
 
   const toggleTheme = () => {
@@ -207,6 +208,12 @@ function App() {
           <a href="#">Aviso de Cookies</a>
         </div>
       </footer>
+
+      {/* Floating About Developer Button */}
+      <Link to="/sobre" className="fab-sobre" aria-label="Sobre o desenvolvedor">
+        <span className="fab-emoji" aria-hidden>👨‍💻</span>
+        <span className="fab-text">Sobre o Desenvolvedor</span>
+      </Link>
     </div>
   )
 }

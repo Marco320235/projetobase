@@ -1,16 +1,39 @@
+
+/* Theme variables to keep layout identical across light/dark and only swap colors */
 .monitor-detalhes {
+  --bg-start: #f8fafc;
+  --bg-end: #e0e7ff;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --text-primary: #1e293b;
+  --text-secondary: #334155;
+  --muted: #64748b;
+  --accent-start: #1e3a8a;
+  --accent-mid: #2563eb;
+  --accent-end: #3b82f6;
+
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+  background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
   padding-bottom: 60px;
 }
 
 .dark-mode .monitor-detalhes {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --bg-start: #0f172a;
+  --bg-end: #1e293b;
+  --card-bg: rgba(30, 41, 59, 0.6);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #e2e8f0;
+  --text-secondary: #cbd5e1;
+  --muted: #94a3b8;
+  --accent-start: #60a5fa;
+  --accent-mid: #93c5fd;
+  --accent-end: #bfdbfe;
+  background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
 }
 
 /* Header */
 .detalhes-header {
-  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  background: linear-gradient(135deg, var(--accent-start) 0%, var(--accent-mid) 100%);
   color: white;
   padding: 40px 20px;
   box-shadow: 0 10px 40px rgba(30, 58, 138, 0.3);
@@ -84,7 +107,7 @@
 }
 
 .metrica-card {
-  background: white;
+  background: var(--card-bg);
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
@@ -117,7 +140,7 @@
 
 .metrica-label {
   font-size: 14px;
-  color: #64748b;
+  color: var(--muted);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -127,7 +150,7 @@
 .metrica-valor {
   font-size: 48px;
   font-weight: 700;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  background: linear-gradient(135deg, var(--accent-start), var(--accent-mid));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -171,7 +194,7 @@
 }
 
 .grafico-container {
-  background: white;
+  background: var(--card-bg);
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
@@ -191,7 +214,7 @@
   margin: 0 0 30px 0;
   font-size: 24px;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -201,7 +224,7 @@
   content: '';
   width: 5px;
   height: 28px;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  background: linear-gradient(135deg, var(--accent-start), var(--accent-mid));
   border-radius: 3px;
 }
 
@@ -215,7 +238,7 @@
 .tabela-section h2 {
   font-size: 28px;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-primary);
   margin-bottom: 24px;
   display: flex;
   align-items: center;
@@ -226,12 +249,12 @@
   content: '';
   width: 5px;
   height: 32px;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  background: linear-gradient(135deg, var(--accent-start), var(--accent-mid));
   border-radius: 3px;
 }
 
 .tabela-container {
-  background: white;
+  background: var(--card-bg);
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -243,7 +266,7 @@
 }
 
 .dados-tabela thead {
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  background: linear-gradient(135deg, var(--accent-start), var(--accent-mid));
   color: white;
 }
 
@@ -258,8 +281,8 @@
 
 .dados-tabela td {
   padding: 18px 20px;
-  border-bottom: 1px solid #e2e8f0;
-  color: #334155;
+  border-bottom: 1px solid var(--card-border);
+  color: var(--text-secondary);
   font-size: 15px;
 }
 
@@ -268,7 +291,7 @@
 }
 
 .dados-tabela tbody tr:hover {
-  background: #f8fafc;
+  background: rgba(148, 163, 184, 0.08);
 }
 
 .dados-tabela tbody tr:last-child td {
@@ -286,34 +309,12 @@
 }
 
 /* Dark Mode */
+/* Dark mode now uses variables above; keep optional blur and minor effects */
 .dark-mode .metrica-card,
 .dark-mode .grafico-container,
 .dark-mode .tabela-container {
-  background: rgba(30, 41, 59, 0.6);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode .metrica-label,
-.dark-mode .grafico-container h2,
-.dark-mode .tabela-section h2 {
-  color: #e2e8f0;
-}
-
-.dark-mode .metrica-valor {
-  background: linear-gradient(135deg, #60a5fa, #93c5fd);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.dark-mode .dados-tabela td {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-  color: #cbd5e1;
-}
-
-.dark-mode .dados-tabela tbody tr:hover {
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
 }
 
 /* Responsive */
